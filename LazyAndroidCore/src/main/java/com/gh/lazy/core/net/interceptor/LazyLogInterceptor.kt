@@ -5,8 +5,8 @@ import android.util.Log
 import com.gh.lazy.core.net.log.DefaultFormatPrinter
 import com.gh.lazy.core.net.log.FormatPrinter
 import com.gh.lazy.core.net.utils.UrlEncoderUtils.Companion.hasUrlEncoded
-import com.gh.lazy.net.util.ZipHelper.Companion.decompressForGzip
-import com.gh.lazy.net.util.ZipHelper.Companion.decompressToStringForZlib
+import com.gh.lazy.core.net.utils.ZipHelper.Companion.decompressForGzip
+import com.gh.lazy.core.net.utils.ZipHelper.Companion.decompressToStringForZlib
 import okhttp3.*
 import okio.Buffer
 import okio.BufferedSource

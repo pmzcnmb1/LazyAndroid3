@@ -1,4 +1,4 @@
-package com.gh.lazy.core.net.utils;
+package com.gh.lazy.utils.net;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

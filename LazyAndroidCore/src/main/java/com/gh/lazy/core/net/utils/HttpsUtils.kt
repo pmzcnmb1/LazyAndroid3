@@ -1,5 +1,5 @@
 
-package com.gh.lazy.net.util
+package com.gh.lazy.core.net.utils
 
 import java.io.IOException
 import java.io.InputStream

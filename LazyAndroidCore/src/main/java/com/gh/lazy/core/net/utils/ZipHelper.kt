@@ -1,4 +1,4 @@
-package com.gh.lazy.net.util
+package com.gh.lazy.core.net.utils
 
 import java.io.*
 import java.nio.charset.Charset
