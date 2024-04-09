@@ -68,9 +68,7 @@ object HttpsUtils {
         return try {
             val keyManagers = prepareKeyManager(bksFile, password)
             val trustManagers = prepareTrustManager(*certificates)
-            val manager: X509TrustManager?
-            manager = //优先使用用户自定义的TrustManager
-                trustManager
+            val manager: X509TrustManager? = trustManager
                     ?: if (trustManagers != null) {
                         //然后使用默认的TrustManager
                         chooseTrustManager(trustManagers)

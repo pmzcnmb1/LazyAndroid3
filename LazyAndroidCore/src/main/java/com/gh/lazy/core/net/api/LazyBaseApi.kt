@@ -1,40 +1,42 @@
 package com.gh.lazy.core.net.api
 
-import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import retrofit2.CallAdapter
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 /**
  * @author GaoHua
  * 网络请求构建器基类
- * 具体配置
+ * 继承LazyBaseApi实现自己的子类即可 自己定义配置等
  */
 abstract class LazyBaseApi {
 
-    var retrofit: () -> Retrofit = {
+    private val retrofit by lazy {
         Retrofit.Builder().apply {
-            baseUrl(getBaseUrl()).client(okHttpClient).addConverterFactory(
-                GsonConverterFactory.create(
-                    GsonBuilder().create()
-                )
-            )
+            baseUrl(getBaseUrl())
+            client(okHttpClient)
+            addConverterFactory(setConverterFactory())
+            setCallAdapterFactory()?.let { addCallAdapterFactory(it) }
         }.build()
     }
+
     private val okHttpClient: OkHttpClient
         get() {
             return initHttpClientBuilder(OkHttpClient.Builder()).build()
         }
 
-    protected fun <T> getApi(serviceClass: Class<T>): T {
-        tt().onBuildRetrofit(Retrofit.Builder(),OkHttpClient.Builder().build()).create(serviceClass)
-        return retrofit.invoke().create(serviceClass)
+    protected fun <T> getApiService(serviceClass: Class<T>): T? {
+        return retrofit?.create(serviceClass)
     }
 
-    abstract fun initHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder
+    protected fun getHttpClient(): OkHttpClient {
+        return okHttpClient
+    }
 
-    abstract fun setRetrofitBuilder(builder: Retrofit.Builder): Retrofit.Builder
+    abstract fun setConverterFactory(): Converter.Factory
+    abstract fun setCallAdapterFactory(): CallAdapter.Factory?
+    abstract fun initHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder
 
     abstract fun getBaseUrl(): String
 

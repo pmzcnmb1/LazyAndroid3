@@ -10,4 +10,9 @@ object LazyAndroid3 {
 
     }
 
+    private fun initHttpApi(){
+
+    }
+
+
 }
