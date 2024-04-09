@@ -19,7 +19,11 @@ import java.util.concurrent.TimeUnit
 
 class LazyLogInterceptor : Interceptor {
     private val mPrinter: FormatPrinter = DefaultFormatPrinter()
-    private val printLevel = Level.ALL
+    private var printLevel = Level.ALL
+
+    fun setPrintLogLevel(printLevel:Level){
+        this@LazyLogInterceptor.printLevel =printLevel
+    }
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

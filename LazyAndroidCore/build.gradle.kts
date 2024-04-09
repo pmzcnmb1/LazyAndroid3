@@ -42,5 +42,6 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation(libs.mmkv.static)
+    implementation(libs.mmkv)
+    implementation(libs.xlog)
 }
