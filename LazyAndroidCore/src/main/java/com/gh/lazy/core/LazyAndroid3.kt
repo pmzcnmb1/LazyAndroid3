@@ -3,7 +3,6 @@ package com.gh.lazy.core
 import android.content.Context
 import com.elvishew.xlog.LogLevel
 import com.elvishew.xlog.XLog
-import com.gh.lazy.core.net.interceptor.LazyLogInterceptor
 import com.tencent.mmkv.MMKV
 
 /**

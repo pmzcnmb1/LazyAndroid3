@@ -3,6 +3,9 @@ package com.gh.lazy.core.base.fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 
@@ -12,6 +15,8 @@ import androidx.fragment.app.Fragment
  * OnViewStateRestored -> OnStart -> OnResume
  */
 abstract class LazyBaseFragment :Fragment(){
+
+     private var attachContext: Context? = null
 
      fun isShowFragmentLifeCycle(isShow:Boolean=true){
 
@@ -31,8 +36,36 @@ abstract class LazyBaseFragment :Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        attachContext=context
     }
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
     }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun getContext(): Context? {
+        return super.getContext()?:attachContext!!
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    abstract fun initView()
+
 }
