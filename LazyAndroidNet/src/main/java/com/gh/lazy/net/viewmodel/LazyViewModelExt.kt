@@ -2,15 +2,15 @@ package com.gh.lazy.net.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gh.lazy.net.net.exception.LazyException
 import com.gh.lazy.net.net.exception.LazyHttpExceptionHandle
-import com.gh.lazy.net.net.log.LogUtils
 import com.gh.lazy.net.net.log.logE
-import kotlinx.coroutines.CancellationException
+import com.gh.lazy.net.net.resp.LazyResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
+import retrofit2.Call
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -25,21 +25,17 @@ import kotlin.coroutines.CoroutineContext
  *
  */
 
-
 fun processException(exception: Throwable) {
-    try {
-        val e = LazyHttpExceptionHandle.processException(exception)
-        "StackTrace:".plus(e.stackTraceToString()).logE()
-        "Exception is:".plus(e.message).logE()
-    } catch (e: Exception) {
-        "StackTrace:".plus(e.stackTraceToString()).logE()
-        "Exception is:".plus(e.message).logE()
-    }
+    printExceptionInfo(LazyHttpExceptionHandle.processException(exception))
+}
 
+private fun printExceptionInfo(e: LazyException) {
+    "StackTrace:".plus(e.stackTraceToString()).logE()
+    "Exception is:".plus(e.message).logE()
 }
 
 /**
- *  网络请求 返回数据可能是任何格式  如调用第三方api等
+ *  网络请求 自定义数据实体
  *  @param onResponse 不对返回数据做统一处理,自行处理
  *  @param onResponse  默认主线程
  *  @param responseContext
@@ -65,4 +61,5 @@ fun <T> ViewModel.requestAny(
         }
     }
 }
+
 
