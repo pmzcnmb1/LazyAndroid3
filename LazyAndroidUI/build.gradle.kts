@@ -30,6 +30,8 @@ android {
 
     buildFeatures {
         viewBinding=true
+        //noinspection DataBindingWithoutKapt
+        dataBinding=true
     }
 
     kotlinOptions {
@@ -45,5 +47,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     api(project(":LazyAndroidUtils"))
+    implementation(libs.recyclerAdapterHelper)
 }

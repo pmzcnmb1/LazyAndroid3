@@ -25,8 +25,8 @@ object LazyReflectHelper {
     /**
      * 获取当前类绑定的泛型ViewModel-clazz
      */
-    fun <VM> getVmClazz(obj: Any,index:Int): VM {
-        return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[index] as VM
+    fun <T> getClazz(obj: Any, index:Int): T {
+        return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[index] as T
     }
 
     /**

@@ -45,8 +45,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.retrofit)
+    api(libs.converter.gson)
+    api(libs.androidx.lifecycle.viewmodel.ktx)
 
 }

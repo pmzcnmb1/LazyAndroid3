@@ -1,12 +1,10 @@
 package com.gh.lazy.ui.base.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.gh.lazy.utils.reflect.LazyReflectHelper
-import java.lang.reflect.ParameterizedType
 
 /**
  * @author GaoHua
@@ -43,6 +41,7 @@ abstract class LazyVBActivity<VB : ViewBinding, VM : ViewModel> : LazyBaseActivi
         _viewModel = createViewModel()
         setContentView(binding.root)
         init()
+        onInitFinish()
     }
 
     private fun init() {
@@ -51,7 +50,7 @@ abstract class LazyVBActivity<VB : ViewBinding, VM : ViewModel> : LazyBaseActivi
     }
 
     private fun createViewModel(): VM {
-        return ViewModelProvider(this)[LazyReflectHelper.getVmClazz(this, index = 1)]
+        return ViewModelProvider(this)[LazyReflectHelper.getClazz(this, index = 1)]
     }
 
     protected abstract fun getViewBinding(): VB

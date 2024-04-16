@@ -7,17 +7,18 @@ abstract class LazyBaseActivity :AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ActivityStackManager.getInstance().addActivity(this)
+        ActivityStackManager.addActivity(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         onRelease()
-        ActivityStackManager.getInstance().finishActivity(this)
+        ActivityStackManager.finishActivity(this)
     }
 
     protected abstract fun loadData()
     protected abstract fun addUiStateObs()
     protected abstract fun onRelease()
+    protected abstract fun onInitFinish()
 
 }

@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.gh.lazy.android.R
 import com.gh.lazy.android.databinding.ActivityMainBinding
+import com.gh.lazy.lazy.debug.LazyDebugTool
 import com.gh.lazy.net.net.core.LazyNet
 import com.gh.lazy.ui.base.activity.LazyVBActivity
 
@@ -28,6 +29,10 @@ class MainActivity : LazyVBActivity<ActivityMainBinding,DemoViewModel>() {
         binding.main.setOnClickListener {
 
         }
+    }
+
+    override fun onInitFinish() {
+       LazyDebugTool.initialize(this)
     }
 
     override fun getViewBinding(): ActivityMainBinding {

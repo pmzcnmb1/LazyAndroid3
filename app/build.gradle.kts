@@ -55,4 +55,5 @@ dependencies {
 
     implementation(project(":LazyAndroidNet"))
     implementation(project(":LazyAndroidUI"))
+    implementation(project(":LazyAndroidDebug"))
 }
