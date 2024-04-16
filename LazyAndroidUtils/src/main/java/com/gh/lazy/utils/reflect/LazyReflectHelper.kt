@@ -2,11 +2,33 @@ package com.gh.lazy.utils.reflect
 
 import android.text.TextUtils
 import java.lang.reflect.InvocationTargetException
+import java.lang.reflect.ParameterizedType
 
 /**
  * 反射辅助
  */
 object LazyReflectHelper {
+
+    inline fun <reified VM> getActualTypeArgument(obj: Any): VM? {
+        if (obj.javaClass.genericSuperclass is ParameterizedType) {
+            val actualTypeArguments = (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments
+            if (actualTypeArguments.isNotEmpty()) {
+                val typeArgument = actualTypeArguments[0]
+                if (typeArgument is VM) {
+                    return typeArgument
+                }
+            }
+        }
+        return null
+    }
+
+    /**
+     * 获取当前类绑定的泛型ViewModel-clazz
+     */
+    fun <VM> getVmClazz(obj: Any,index:Int): VM {
+        return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[index] as VM
+    }
+
     /**
      * 从一个对象中, 获取指定的成员对象
      */

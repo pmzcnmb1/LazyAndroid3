@@ -19,7 +19,7 @@ class LazyNet private constructor() {
             LazyNet()
         }
 
-        fun getInstance(): LazyNet {
+        fun getLazyNet(): LazyNet {
             return instance
         }
     }

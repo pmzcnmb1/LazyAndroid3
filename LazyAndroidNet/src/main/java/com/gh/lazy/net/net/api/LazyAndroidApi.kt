@@ -50,10 +50,6 @@ class LazyAndroidApi(
     fun <T> getService(serviceClass: Class<T>): T? {
         return retrofit?.create(serviceClass)
     }
-
-    fun getRetrofit():Retrofit{
-        return retrofit
-    }
 }
 
 

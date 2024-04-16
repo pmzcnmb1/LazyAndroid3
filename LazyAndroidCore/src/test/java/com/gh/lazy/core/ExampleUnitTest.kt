@@ -1,4 +1,4 @@
-package com.gh.lazy.net
+package com.gh.lazy.core
 
 import org.junit.Test
 
