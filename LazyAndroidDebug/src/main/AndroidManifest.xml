@@ -4,12 +4,17 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <application>
+    <application android:name="com.gh.lazy.ui.base.app.LazyApplication">
 
-    <activity
-        android:name=".ui.EntranceActivity"
-        android:exported="true"
-        android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.EntranceActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.PagePathLogListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
     </application>
 

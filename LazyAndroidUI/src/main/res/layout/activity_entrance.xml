@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_go_log"
+        android:id="@+id/tv_go_http_log"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginHorizontal="20dp"
@@ -14,9 +14,38 @@
         android:background="#000000"
         android:textColor="#ffffff"
         android:textSize="14sp"
-        android:text="查看日志"
+        android:text="网络请求日志"
         android:gravity="center"
         android:textStyle="bold"
         android:layout_height="45dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_go_exp_log"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_go_http_log"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:text="崩溃日志"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_height="45dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_go_page_log"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_go_exp_log"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:text="页面访问日志"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_height="45dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

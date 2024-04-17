@@ -49,5 +49,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     api(project(":LazyAndroidUtils"))
-    implementation(libs.recyclerAdapterHelper)
+
+    api(libs.recyclerAdapterHelper)
+    api(libs.mmkv)
 }

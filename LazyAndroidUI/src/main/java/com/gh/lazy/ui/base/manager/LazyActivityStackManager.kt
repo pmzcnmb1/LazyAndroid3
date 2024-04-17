@@ -1,4 +1,4 @@
-package com.gh.lazy.ui.base.activity
+package com.gh.lazy.ui.base.manager
 
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.FragmentActivity
@@ -7,7 +7,7 @@ import java.util.Stack
 /**
  * activity堆栈管理
  */
-object  ActivityStackManager  {
+object  LazyActivityStackManager  {
     private val mActivityStack = Stack<FragmentActivity>()
 
     fun addActivity(activity: FragmentActivity) {

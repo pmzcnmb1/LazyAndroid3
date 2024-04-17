@@ -18,6 +18,8 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class LazyLogInterceptor : Interceptor {
+
+
     private val mPrinter: IHttpFormatPrinter = DefaultFormatPrinter()
     private var printLevel = Level.ALL
 
@@ -201,6 +203,13 @@ class LazyLogInterceptor : Interceptor {
     }
 
     companion object {
+
+        private var logInfoInterface:ILazyLogInfo?=null
+
+        fun setLogInfoInterface(logInfoInterface:ILazyLogInfo){
+            this.logInfoInterface=logInfoInterface
+        }
+
         /**
          * 解析请求服务器的请求参数
          *
@@ -263,7 +272,7 @@ class LazyLogInterceptor : Interceptor {
             return if (mediaType?.subtype() == null) {
                 false
             } else mediaType.subtype()
-                .toLowerCase().contains("plain")
+                .toLowerCase(Locale.ROOT).contains("plain")
         }
 
         @JvmStatic

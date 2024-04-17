@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.2"
 easyfloat = "2.0.4"
+mmkv = "1.3.4"
 recyclerAdapterHelper = "4.1.4"
 lifecycleViewmodelKtx = "2.7.0"
 kotlin = "1.9.0"
@@ -18,6 +19,7 @@ constraintlayout = "2.1.4"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 easyFloat = { module = "com.github.princekin-f:EasyFloat", version.ref = "easyfloat" }
+mmkv = { module = "com.tencent:mmkv", version.ref = "mmkv" }
 recyclerAdapterHelper = { module = "io.github.cymchad:BaseRecyclerViewAdapterHelper4", version.ref = "recyclerAdapterHelper" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

@@ -25,7 +25,7 @@ import com.gh.lazy.utils.reflect.LazyReflectHelper
  *  由于反射调用不会在编译时捕获错误，因此存在在调用时传入错误的参数或调用不存在的方法的风险。
  *  -----------------------------------------------------------------------------------
  */
-abstract class LazyVBActivity<VB : ViewBinding, VM : ViewModel> : LazyBaseActivity() {
+abstract class LazyVBActivity<VB : ViewBinding, VM : ViewModel> : LazyLogActivity() {
 
     private var _binding: VB? = null
     private var _viewModel: VM? = null
