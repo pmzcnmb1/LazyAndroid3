@@ -28,10 +28,15 @@ class PagePathLogListActivity :LazyStaticActivity<ActivityPagePathBinding>(){
 
     }
 
-    override fun onInitFinish() {
+    override fun onResume() {
+        super.onResume()
         binding.tvPagePath.text= LazyPagePathLogManager.getLog()
         binding.tvPagePath.clickNoRepeat {
             LazyPagePathLogManager.clearLog()
         }
+    }
+
+    override fun onInitFinish() {
+
     }
 }

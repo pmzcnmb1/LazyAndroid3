@@ -4,20 +4,26 @@ import android.app.Activity
 import android.view.Gravity
 import com.gh.lazy.lazy.debug.ui.activity.EntranceActivity
 import com.gh.lazy.lazy.debug.ui.activity.PagePathLogListActivity
-import com.gh.lazy.lazy.debug.utils.ApiLogHelper
 import com.gh.lazy.lazy.debug.utils.ErrorLogUtil
-import com.gh.lazy.net.net.interceptor.ILazyLogInfo
 import com.gh.lazy.net.net.interceptor.LazyLogInterceptor
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
 import com.lzf.easyfloat.enums.SidePattern
-import okhttp3.Request
+import com.tencent.mmkv.MMKV
 
 object LazyDebugTool {
+
+     const val CUSTOM_USER_ALIAS = "lazy_custom_user_alias"
+     const val CUSTOM_USER_ID = "lazy_custom_user_id"
 
     fun initialize(activity: Activity) {
         initDebugFloat()
         createDebugFloat(activity)
+    }
+
+    fun setCustomUserIdentification(customUserInfo: ILogUserInfo) {
+        MMKV.defaultMMKV().encode(CUSTOM_USER_ALIAS,customUserInfo.getUserAlias())
+        MMKV.defaultMMKV().encode(CUSTOM_USER_ID,customUserInfo.getUserAlias())
     }
 
     private fun initDebugFloat() {

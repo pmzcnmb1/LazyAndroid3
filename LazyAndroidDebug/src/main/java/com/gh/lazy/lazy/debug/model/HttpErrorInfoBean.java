@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import com.gh.lazy.lazy.debug.utils.JsonFormatUtil;
 
 
-public class ApiLogBean implements Parcelable {
+public class HttpErrorInfoBean implements Parcelable {
 
     public static final String[] API_TITLE_ARRAY = {"URL", "耗时", "Method", "Headers", "RequestBody", "ResponseBody"};
 
@@ -20,7 +20,7 @@ public class ApiLogBean implements Parcelable {
     private long requestTime;
     private long durationTime;
 
-    public ApiLogBean(String url, String method, String headers, String request, String response, long requestTime, long durationTime) {
+    public HttpErrorInfoBean(String url, String method, String headers, String request, String response, long requestTime, long durationTime) {
         this.url = url;
         this.method = method;
         this.headers = headers;
@@ -114,7 +114,7 @@ public class ApiLogBean implements Parcelable {
         dest.writeLong(this.durationTime);
     }
 
-    protected ApiLogBean(Parcel in) {
+    protected HttpErrorInfoBean(Parcel in) {
         this.url = in.readString();
         this.method = in.readString();
         this.headers = in.readString();
@@ -124,15 +124,15 @@ public class ApiLogBean implements Parcelable {
         this.durationTime = in.readLong();
     }
 
-    public static final Creator<ApiLogBean> CREATOR = new Creator<ApiLogBean>() {
+    public static final Creator<HttpErrorInfoBean> CREATOR = new Creator<HttpErrorInfoBean>() {
         @Override
-        public ApiLogBean createFromParcel(Parcel source) {
-            return new ApiLogBean(source);
+        public HttpErrorInfoBean createFromParcel(Parcel source) {
+            return new HttpErrorInfoBean(source);
         }
 
         @Override
-        public ApiLogBean[] newArray(int size) {
-            return new ApiLogBean[size];
+        public HttpErrorInfoBean[] newArray(int size) {
+            return new HttpErrorInfoBean[size];
         }
     };
 }

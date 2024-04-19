@@ -1,41 +1,38 @@
 package com.gh.lazy.lazy.debug.utils;
 
-import com.gh.lazy.lazy.debug.model.ApiLogBean;
+import com.gh.lazy.lazy.debug.model.HttpErrorInfoBean;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import kotlin.Pair;
 import okhttp3.Headers;
 import okhttp3.Request;
 
-public class ApiLogHelper {
+public class HttpLogHelper {
 
-    private List<ApiLogBean> apiLogList;
+    private List<HttpErrorInfoBean> apiLogList;
 
-    private ApiLogHelper() {
+    private HttpLogHelper() {
         apiLogList = new ArrayList<>();
     }
 
-    public static ApiLogHelper getInstance() {
+    public static HttpLogHelper getInstance() {
         return InstanceHelper.instance;
     }
 
     private static class InstanceHelper {
-        private static ApiLogHelper instance = new ApiLogHelper();
+        private static HttpLogHelper instance = new HttpLogHelper();
     }
 
-    public synchronized void addApiLog(ApiLogBean bean) {
+    public synchronized void addApiLog(HttpErrorInfoBean bean) {
         if (apiLogList != null) {
             apiLogList.add(0, bean);
         }
     }
 
-    public List<ApiLogBean> getApiLogList() {
+    public List<HttpErrorInfoBean> getApiLogList() {
         return apiLogList;
     }
 
@@ -59,7 +56,7 @@ public class ApiLogHelper {
 //            }
 //        }
 
-        ApiLogBean apiLogBean = new ApiLogBean(request.url().toString(), request.method(),
+        HttpErrorInfoBean apiLogBean = new HttpErrorInfoBean(request.url().toString(), request.method(),
                 headerJson.toString(), requestBody, responseBody, requestTime, duration);
 
         addApiLog(apiLogBean);

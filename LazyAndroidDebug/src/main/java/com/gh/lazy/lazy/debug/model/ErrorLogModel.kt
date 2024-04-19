@@ -1,7 +1,6 @@
-package com.sneaker.debug_tools.bean
-
+package com.gh.lazy.lazy.debug.model
 data class ErrorLogModel(
     var title: String? = null,
     var logContent: String? = null,
-    var time: String? = null,
+    var time: String? = null
 )

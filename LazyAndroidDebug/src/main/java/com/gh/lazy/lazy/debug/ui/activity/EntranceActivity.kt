@@ -37,5 +37,9 @@ class EntranceActivity :LazyStaticActivity<ActivityEntranceBinding>(){
         binding.tvGoPageLog.clickNoRepeat {
              PagePathLogListActivity.start(this)
         }
+
+        binding.tvGoExpLog.clickNoRepeat {
+            ErrorListActivity.start(this)
+        }
     }
 }

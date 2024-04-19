@@ -5,7 +5,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 
-import com.gh.lazy.lazy.debug.model.ApiLogBean;
+import com.gh.lazy.lazy.debug.model.HttpErrorInfoBean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,9 +17,6 @@ public class JsonFormatUtil {
      * 匹配Key值的正则表达式
      */
     private static final String PROPERTY_NAME_REGEX = "(\\\"(.*?)\\\":)";
-
-    // 表达式还有问题
-//    private static final String PROPERTY_VALUE_REGEX = "(\\:\\s)(\\\"|.*)(.*?)(\\\"|.*)(\\,|\\n)";
 
     /**
      * JSON语法着色
@@ -34,7 +31,7 @@ public class JsonFormatUtil {
         coloringJson(spannableString, formatJsonStr, PROPERTY_NAME_REGEX, "#009933", 0, -1);
 
         // 给指定的标题设置玫红色
-        for (String title : ApiLogBean.API_TITLE_ARRAY) {
+        for (String title : HttpErrorInfoBean.API_TITLE_ARRAY) {
             coloringJson(spannableString, formatJsonStr, title, "#990000", 0, 0);
         }
 

@@ -3,7 +3,10 @@ package com.gh.lazy.lazy.debug.utils;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import com.sneaker.debug_tools.bean.ErrorLogModel;
+
+import com.gh.lazy.lazy.debug.LazyDebugTool;
+import com.gh.lazy.lazy.debug.model.ErrorLogModel;
+import com.tencent.mmkv.MMKV;
 
 
 import java.io.PrintWriter;
@@ -12,8 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class ErrorLogUtil implements Thread.UncaughtExceptionHandler{
+
 
     private static ErrorLogUtil errorUtil;
     private Context mContext;
@@ -52,12 +57,12 @@ public class ErrorLogUtil implements Thread.UncaughtExceptionHandler{
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         throwable.printStackTrace(pw);
-        stringBuilder.append(sw.toString());
+        stringBuilder.append(sw);
         //拿到的错误信息
         String errorLog = stringBuilder.toString();
         //保存日志信息
-//        ErrorLogModel logModel = new ErrorLogModel(title, errorLog, time);
-//        saveErrorLog(logModel);
+        ErrorLogModel logModel = new ErrorLogModel(title, errorLog, time);
+        saveErrorLog(logModel);
 
 
         //如何处理该崩溃，下面使用默认的处理方式让APP停止运行
@@ -65,29 +70,39 @@ public class ErrorLogUtil implements Thread.UncaughtExceptionHandler{
     }
 
 
-//    public void saveErrorLog(ErrorLogModel logModel) {
-//        String json = MMKVUtils.getInstance().getString(TAG, "");
-//        if (TextUtils.isEmpty(json)){
-//            List<ErrorLogModel> logList = new ArrayList<>();
-//            logList.add(logModel);
-//            MMKVUtils.getInstance().putString(TAG, JsonUtils.toJson(logList));
-//        }else {
-//            List<ErrorLogModel> logList = JsonUtils.toList(json, ErrorLogModel.class);
-//            if (logList != null){
-//                logList.add(0, logModel);
-//            }
-//            MMKVUtils.getInstance().putString(TAG, JsonUtils.toJson(logList));
-//        }
-//    }
-//
-//    public List<ErrorLogModel> getErrorLogList(){
-//        String json = MMKVUtils.getInstance().getString(TAG, "");
-//        errorLogList = JsonUtils.toList(json, ErrorLogModel.class);
-//        return errorLogList;
-//    }
-//
-//    public void clearLog(){
-//        MMKVUtils.getInstance().clear(TAG);
-//    }
+    public void saveErrorLog(ErrorLogModel logModel) {
+        String json = MMKV.defaultMMKV().getString(TAG, "");
+        if (TextUtils.isEmpty(json)){
+            List<ErrorLogModel> logList = new ArrayList<>();
+            logList.add(logModel);
+            MMKV.defaultMMKV().putString(TAG, JsonUtils.toJson(logList));
+        }else {
+            List<ErrorLogModel> logList = JsonUtils.toList(json, ErrorLogModel.class);
+            if (logList != null){
+                logList.add(0, logModel);
+            }
+            MMKV.defaultMMKV().putString(TAG, JsonUtils.toJson(logList));
+        }
+    }
+
+    public List<ErrorLogModel> getErrorLogList(){
+        String json = MMKV.defaultMMKV().getString(TAG, "");
+        errorLogList = JsonUtils.toList(json, ErrorLogModel.class);
+        return errorLogList;
+    }
+
+    public ErrorLogModel getErrorLogModel(int index){
+        String json = MMKV.defaultMMKV().getString(TAG, "");
+        errorLogList = JsonUtils.toList(json, ErrorLogModel.class);
+        return errorLogList != null ? errorLogList.get(index) : null;
+    }
+
+    public String getErrorLogJson(){
+        return MMKV.defaultMMKV().getString(TAG, "");
+    }
+
+    public void clearLog(){
+        MMKV.defaultMMKV().removeValueForKey(TAG);
+    }
 
 }
