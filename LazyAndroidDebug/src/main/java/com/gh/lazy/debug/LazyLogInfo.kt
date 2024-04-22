@@ -1,6 +1,6 @@
-package com.gh.lazy.lazy.debug
+package com.gh.lazy.debug
 
-import com.gh.lazy.lazy.debug.utils.HttpLogHelper
+import com.gh.lazy.debug.utils.HttpLogHelper
 import com.gh.lazy.net.net.interceptor.ILazyLogInfo
 import okhttp3.Request
 

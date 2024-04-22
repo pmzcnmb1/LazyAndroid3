@@ -1,4 +1,4 @@
-package com.gh.lazy.lazy.debug.utils;
+package com.gh.lazy.debug.utils;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

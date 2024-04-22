@@ -1,4 +1,4 @@
-package com.gh.lazy.lazy.debug
+package com.gh.lazy.debug
 
 /**
  * 自定义的用户标识

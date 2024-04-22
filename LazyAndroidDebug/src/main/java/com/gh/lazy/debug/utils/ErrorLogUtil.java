@@ -1,11 +1,10 @@
-package com.gh.lazy.lazy.debug.utils;
+package com.gh.lazy.debug.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
 
-import com.gh.lazy.lazy.debug.LazyDebugTool;
-import com.gh.lazy.lazy.debug.model.ErrorLogModel;
+import com.gh.lazy.debug.model.ErrorLogModel;
 import com.tencent.mmkv.MMKV;
 
 
@@ -15,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 public class ErrorLogUtil implements Thread.UncaughtExceptionHandler{
 

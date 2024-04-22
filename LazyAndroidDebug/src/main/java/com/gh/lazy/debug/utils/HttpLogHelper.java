@@ -1,6 +1,6 @@
-package com.gh.lazy.lazy.debug.utils;
+package com.gh.lazy.debug.utils;
 
-import com.gh.lazy.lazy.debug.model.HttpErrorInfoBean;
+import com.gh.lazy.debug.model.HttpErrorInfoBean;
 
 import org.json.JSONObject;
 

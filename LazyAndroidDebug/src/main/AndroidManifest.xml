@@ -7,16 +7,21 @@
     <application android:name="com.gh.lazy.ui.base.app.LazyApplication">
 
         <activity
-            android:name=".ui.activity.EntranceActivity"
+            android:name="com.gh.lazy.debug.ui.activity.EntranceActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.activity.PagePathLogListActivity"
+            android:name="com.gh.lazy.debug.ui.activity.PagePathLogListActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.activity.ErrorListActivity"
+        <activity android:name="com.gh.lazy.debug.ui.activity.ErrorListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name="com.gh.lazy.debug.ui.activity.ErrorInfoActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             />

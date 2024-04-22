@@ -1,10 +1,11 @@
-package com.gh.lazy.lazy.debug.ui.activity
+package com.gh.lazy.debug.ui.activity
 
 import android.content.Context
 import android.content.Intent
-import com.gh.lazy.lazy.debug.databinding.ActivityErrorListBinding
-import com.gh.lazy.lazy.debug.ui.adapter.ErrorListAdapter
-import com.gh.lazy.lazy.debug.utils.ErrorLogUtil
+import com.gh.lazy.debug.R
+import com.gh.lazy.debug.databinding.ActivityErrorListBinding
+import com.gh.lazy.debug.ui.adapter.ErrorListAdapter
+import com.gh.lazy.debug.utils.ErrorLogUtil
 import com.gh.lazy.ui.base.activity.LazyStaticActivity
 
 class ErrorListActivity :LazyStaticActivity<ActivityErrorListBinding>(){
@@ -18,7 +19,11 @@ class ErrorListActivity :LazyStaticActivity<ActivityErrorListBinding>(){
     }
 
     private val listAdapter by lazy {
-        ErrorListAdapter(this,ErrorLogUtil.getInstance().errorLogList?: mutableListOf())
+        ErrorListAdapter()
+    }
+
+    private val adapterData by lazy {
+        ErrorLogUtil.getInstance().errorLogList?: mutableListOf()
     }
 
     override fun getViewBinding(): ActivityErrorListBinding {
@@ -36,6 +41,11 @@ class ErrorListActivity :LazyStaticActivity<ActivityErrorListBinding>(){
     override fun onInitFinish() {
         binding.rvList.apply {
             adapter=listAdapter
+        }
+
+        listAdapter.submitList(adapterData)
+        listAdapter.addOnItemChildClickListener(R.id.cl_root) { _, _, position ->
+            ErrorInfoActivity.start(this,adapterData[position])
         }
     }
 

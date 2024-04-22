@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.gh.lazy.lazy.debug"
+    namespace = "com.gh.lazy.debug"
     compileSdk = 34
 
     defaultConfig {
@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.easyFloat)
+    implementation(project(":LazyAndroidUtils"))
     api(project(":LazyAndroidNet"))
     api(project(":LazyAndroidUI"))
 }

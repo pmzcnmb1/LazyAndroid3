@@ -1,11 +1,11 @@
-package com.gh.lazy.lazy.debug.utils;
+package com.gh.lazy.debug.utils;
 
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 
-import com.gh.lazy.lazy.debug.model.HttpErrorInfoBean;
+import com.gh.lazy.debug.model.HttpErrorInfoBean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,11 +1,11 @@
-package com.gh.lazy.lazy.debug.model;
+package com.gh.lazy.debug.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import com.gh.lazy.lazy.debug.utils.JsonFormatUtil;
+import com.gh.lazy.debug.utils.JsonFormatUtil;
 
 
 public class HttpErrorInfoBean implements Parcelable {
